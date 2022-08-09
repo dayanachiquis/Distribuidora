@@ -31,4 +31,4 @@ jobs:
       with:
         app-name: 'DistribuidoraLyD'
         publish-profile: $
-        package: ./dist/DistribuidoraLyD
+        package: ./DistribuidoraLyD
