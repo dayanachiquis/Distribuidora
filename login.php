@@ -19,10 +19,9 @@ if(isset( $_POST['inUsuario']) && !empty( $_POST['inUsuario']) &&
             echo "Ocurrió algo con la base de datos: " . $e->getMessage();
         }
 
-        $stmt = $base_de_datos->prepare("SELECT COUNT(*) FROM cliente WHERE inNombre = ? AND inContacto = ?");
+        $stmt = $base_de_datos->prepare("SELECT COUNT(*) FROM usuarios WHERE inUsuario = ? AND inPassword = ? AND inRol = 'Administrador'");
         $stmt->execute([$inUsuario, $inPassword]);
         $count = $stmt->fetchColumn();
-
         if($count > 0)
         {
             header("Location: Administracion.html");            
