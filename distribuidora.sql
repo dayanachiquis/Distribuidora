@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-10-2022 a las 06:53:41
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Tiempo de generación: 03-11-2022 a las 06:14:28
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.0.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -53,7 +53,10 @@ INSERT INTO `cliente` (`inNombre`, `inEmail`, `inContacto`, `inMensaje`, `slSoli
 ('HENRY', 'hepeco1009@hotmail.com', '316', 'prueba', NULL),
 ('HENRY', 'hpenuelac@gmail.com', '316', 'prueba', 'Precios'),
 ('teffy', 'hepeco1009@hotmail.com', '225', 'prueba asdfa', 'Factura'),
-('gustavo', 'hepeco1009@hotmail.com', '225', 'prueba', 'Factura');
+('gustavo', 'hepeco1009@hotmail.com', '225', 'prueba', 'Factura'),
+('ssasad', 'ssd@gmail.com', '1655', 'dsd', 'Factura'),
+('ssss', 'ssd@gmail.com', '566', 'kskks', 'Factura'),
+('hghuhg', 'dayan@gmail.com', '2156465454', 'hjbjh', 'Factura');
 
 -- --------------------------------------------------------
 
@@ -83,52 +86,51 @@ INSERT INTO `empleados` (`EmpNombre`, `EmpIdentificacion`, `EmplCargo`, `EmpSala
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `facturas`
+-- Estructura de tabla para la tabla `inventario`
 --
 
-CREATE TABLE `facturas` (
-  `FacNumerodefactura` int(70) DEFAULT NULL,
-  `FacIdentificacion` int(30) NOT NULL,
-  `FactNumerodepago` int(40) DEFAULT NULL,
-  `FactCantidad` int(40) DEFAULT NULL,
-  `FactGanancia` int(40) DEFAULT NULL
+CREATE TABLE `inventario` (
+  `InvDescripcion` varchar(70) DEFAULT NULL,
+  `InvCodigo` int(30) NOT NULL,
+  `InvFecha` varchar(40) DEFAULT NULL,
+  `InvCantidad` int(40) DEFAULT NULL,
+  `InvMovimiento` varchar(40) DEFAULT NULL,
+  `InvUnidades` varchar(20) NOT NULL,
+  `InvExistencia` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `facturas`
+-- Volcado de datos para la tabla `inventario`
 --
 
-INSERT INTO `facturas` (`FacNumerodefactura`, `FacIdentificacion`, `FactNumerodepago`, `FactCantidad`, `FactGanancia`) VALUES
-(2569, 852135, 12345635, 110, 350),
-(2541, 8025412, 12345612, 40, 55),
-(785, 10212453, 12345653, 95, 150),
-(2145, 10254888, 12345688, 85, 110),
-(1235, 101526325, 12345625, 20, 48);
+INSERT INTO `inventario` (`InvDescripcion`, `InvCodigo`, `InvFecha`, `InvCantidad`, `InvMovimiento`, `InvUnidades`, `InvExistencia`) VALUES
+('1L Nectar', 45698, '20/09/2022', 30, 'Entrada', '30', '30'),
+('Petaco Cerveza', 123665, '25/08/2022', 20, 'Salida', '-20', '-20');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `prodcuto`
+-- Estructura de tabla para la tabla `producto`
 --
 
-CREATE TABLE `prodcuto` (
+CREATE TABLE `producto` (
   `ProCodigo` int(20) NOT NULL,
   `ProDescripcion` varchar(70) DEFAULT NULL,
   `ProProveedor` varchar(30) DEFAULT NULL,
-  `ProPreciocliente` int(30) DEFAULT NULL,
-  `ProPreciodeventa` int(30) DEFAULT NULL,
-  `Procantidadenbodega` int(30) DEFAULT NULL
+  `ProPrecio` int(30) DEFAULT NULL,
+  `ProVenta` int(30) DEFAULT NULL,
+  `ProExistencia` int(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `prodcuto`
+-- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `prodcuto` (`ProCodigo`, `ProDescripcion`, `ProProveedor`, `ProPreciocliente`, `ProPreciodeventa`, `Procantidadenbodega`) VALUES
+INSERT INTO `producto` (`ProCodigo`, `ProDescripcion`, `ProProveedor`, `ProPrecio`, `ProVenta`, `ProExistencia`) VALUES
 (25479, 'Gaseosa PACA DE 6 UNIDADES 1.5L', 'Bavaria', 25000, 38000, 15),
 (45698, 'Nectar 1L', 'Licores sas', 28000, 45000, 30),
 (123654, 'Ron 1L', 'Licores sas', 58000, 72000, 90),
-(123665, 'Cerveza PETACO', 'Bavaria', 35000, 47000, 50),
+(123665, 'Cerveza  Aguila PETACO ', 'Bavaria', 35000, 47000, 50),
 (254789, 'Whisky 1L', 'Distribuccion el mejor whisky', 90000, 110000, 25);
 
 -- --------------------------------------------------------
@@ -141,19 +143,22 @@ CREATE TABLE `proveedor` (
   `ProCodigo` int(30) NOT NULL,
   `ProNombre` varchar(30) DEFAULT NULL,
   `ProTelefono` varchar(20) DEFAULT NULL,
-  `ProEmail` varchar(30) DEFAULT NULL
+  `ProEmail` varchar(30) DEFAULT NULL,
+  `ProEditar` varchar(1) DEFAULT NULL,
+  `Eliminar` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `proveedor`
 --
 
-INSERT INTO `proveedor` (`ProCodigo`, `ProNombre`, `ProTelefono`, `ProEmail`) VALUES
-(80025236, 'Licores sas', '7858222', 'licoressas@gmail.com'),
-(80025428, 'Distribuccion el mejor whisky', '4452525', 'Bavaria@gmail.com'),
-(90025256, 'Bavaria', '4405852', 'Barvaria123@gmail.com'),
-(123456789, 'StikeBmx', '104', 'prueba@prueba.com'),
-(1013599987, 'StikeBmx', '3162671645', 'prueba@prueba.com');
+INSERT INTO `proveedor` (`ProCodigo`, `ProNombre`, `ProTelefono`, `ProEmail`, `ProEditar`, `Eliminar`) VALUES
+(12547, 'wilson', '32514646686', 'dayaana@gmail.com', NULL, NULL),
+(80025236, 'Licores sas', '7858222', 'licoressas@gmail.com', NULL, NULL),
+(80025428, 'Distribuccion el mejor whisky', '4452525', 'Bavaria@gmail.com', NULL, NULL),
+(90025256, 'Bavaria', '4405852', 'Barvaria123@gmail.com', NULL, NULL),
+(123456789, 'StikeBmx', '104', 'prueba@prueba.com', NULL, NULL),
+(1013599987, 'StikeBmx', '3162671645', 'prueba@prueba.com', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -186,15 +191,15 @@ ALTER TABLE `empleados`
   ADD PRIMARY KEY (`EmpIdentificacion`);
 
 --
--- Indices de la tabla `facturas`
+-- Indices de la tabla `inventario`
 --
-ALTER TABLE `facturas`
-  ADD PRIMARY KEY (`FacIdentificacion`);
+ALTER TABLE `inventario`
+  ADD PRIMARY KEY (`InvCodigo`);
 
 --
--- Indices de la tabla `prodcuto`
+-- Indices de la tabla `producto`
 --
-ALTER TABLE `prodcuto`
+ALTER TABLE `producto`
   ADD PRIMARY KEY (`ProCodigo`);
 
 --
