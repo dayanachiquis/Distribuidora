@@ -1,6 +1,6 @@
 <?php
 $usuario = "root";
-$nombre_base_de_datos = "factura";
+$nombre_base_de_datos = "distribuidora";
 $inUsuario = $_POST['inUsuario'];
 $inPassword = $_POST['inPassword'];
 

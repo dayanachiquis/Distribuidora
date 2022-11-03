@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <!-- Basic -->
   <meta charset="utf-8" />
@@ -12,7 +11,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Usuarios</title>
+  <title>Distribuidora</title>
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css"
@@ -23,8 +22,6 @@
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Roboto:400,700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
@@ -39,7 +36,7 @@
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
             <span>
-              Servicios
+              Producto
             </span>
           </a>
           <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
@@ -50,14 +47,10 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
-              <ul class="navbar-nav  ">
-                
-            
-               
-                
-              </ul>
+           
             </div>
           </div>
+          
           <form class="nav justify-content-end">
             <button class=nav-link href="index.html">
                 <li class="nav-item">
@@ -68,93 +61,72 @@
         </nav>
       </div>
     </header>
-  </div> 
-  
+    <!-- end header section -->
+  </div>
 
  <!-- service section -->
-
-  <section class="service_section layout_padding-bottom">
-    <div class="custom_heading-container">
-       <h3 class=" ">
-          Servicios
-       </h3>  
-     </div>
-  </section>   
-
-<!-- end header section -->
-<section class="service_section layout_padding-bottom">
+ <section class="service_section layout_padding-bottom">
   <div class="container">
     <div class="custom_heading-container">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="box b-1">
-            <div class="img-box">
-              <img src="images/proveedores.png" alt="">
-            </div>
-           <div class="detail-box">
-              <div class="btn-box">
-                
-                  <a class="active" href="proveedores.php">
-                   Proveedores
-                  </a>
-           
-                
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="box b-2">
-            <div class="img-box">
-              <img src="images/s-2.jpg" alt="">
-            </div>
-            <div class="detail-box">
-              <div class="btn-box">
-                <a href="inventarios.php">
-                  Inventario
-                </a>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="box b-3">
-            <div class="img-box">
-              <img src="images/s-3.jpg" alt="">
-            </div>
-            <div class="detail-box">
-              <div class="btn-box">
-                <a href="producto.php">
-                  Producto
-                </a>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="box b-4">
-            <div class="img-box">
-              <img src="images/vector-icono-de-trabajo-en-equipo-aislado-sobre-fondo-blanco-signo-de-trabajo-en-equipo-400-136907336.jpg" alt="">
-            </div>
-            <div class="detail-box">
-              <div class="btn-box">
-                <a href="">
-                  Equipo
-                </a>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <h3 class= " ">
+          Producto       
+    </div>    
   </div>
 </section>
+<!-- end service section -->
+
+ <!-- service section -->
+ <section class="service_section layout_padding-bottom">
+  <div class="container">
+    <div class="custom_heading-container">
+    <?php
+      $conexion=new PDO("mysql:host=localhost;dbname=distribuidora;","root");
+          $busqueda=$conexion->prepare("SELECT * FROM producto");
+          $busqueda->execute();
+          $resultado = $busqueda->fetchAll();
+      ?>
+      <table class="table">
+        <caption>
+          
+        </caption>
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Codigo</th>
+            <th scope="col">Descripcion</th> 
+            <th scope="col">Proveedor</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Venta</th>
+            <th scope="col">Existencia</th>
+          
+            
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          foreach($resultado as $res)
+          {
+            echo "<tr>";
+            echo "<td>".$res["ProCodigo"]."</td>";
+            echo "<td>".$res["ProDescripcion"]."</td>";
+            echo "<td>".$res["ProProveedor"]."</td>";
+            echo "<td>".$res["ProPrecio"]."</td>";
+            echo "<td>".$res["ProVenta"]."</td>";
+            echo "<td>".$res["ProExistencia"]."</td>";
+           
+            echo "</tr>";
+          }   
+          ?>
+        </tbody>
+      </table>    
+    </div>    
+  </div>
+</section>
+<!-- end service section -->
+
 
 <!-- end service section -->
 
+    <!-- info section -->
     <!-- info section -->
     <section class="info_section layout_padding">
       <div class="container">
@@ -177,6 +149,7 @@
         </div>
       </div>          
     </section>
+    <!-- end info_section -->
     <!-- end info_section -->
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>

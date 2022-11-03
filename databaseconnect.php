@@ -1,6 +1,6 @@
 <?php
 $usuario = "root";
-$nombre_base_de_datos = "factura";
+$nombre_base_de_datos = "distribuidora";
 $inNombre = $_POST['inNombre'];
 $inEmail = $_POST['inEmail'];
 $inContacto = $_POST['inContacto'];
