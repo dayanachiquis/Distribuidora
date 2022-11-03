@@ -67,7 +67,7 @@
   </div>
 
  <!-- service section -->
- <<section class="service_section layout_padding-bottom">
+ <section class="service_section layout_padding-bottom">
   <div class="container">
     <div class="custom_heading-container">
         <h3 class= " ">
@@ -76,23 +76,6 @@
      </div> 
    </div>    
  </section>
-         <div class="container mt-10">
-                    <div class="row"> 
-                        
-                        <div class="align-self-start">
-                            <h3>Ingrese datos</h3>
-                                <form action="insertar.php" method="POST">
-
-                                    <input type="text" class="form-control mb-3" name="codigo" placeholder="Codigo">
-                                    <input type="text" class="form-control mb-3" name="Nombre" placeholder="Nombre">
-                                    <input type="text" class="form-control mb-3" name="Telefono" placeholder="Telefono">
-                                    <input type="text" class="form-control mb-3" name="Email" placeholder="Email">
-                                    
-                                    <input type="submit" class="btn btn-danger">
-                                </form>
-                        </div>
-            
-                        
 <!-- end service section -->
 
  <!-- service section -->
@@ -127,33 +110,80 @@
           foreach($resultado as $res)
           {
             echo "<tr>";
-            echo "<td>".$res["ProCodigo"]."</td>";
-            echo "<td>".$res["ProNombre"]."</td>";
-            echo "<td>".$res["ProTelefono"]."</td>";
-            echo "<td>".$res["ProEmail"]."</td>"; 
-            echo "<td>".$res["ProEditar"]. "</td>";
-            
-
-
+              echo "<td>".$res["ProCodigo"]."</td>";
+              echo "<td>".$res["ProNombre"]."</td>";
+              echo "<td>".$res["ProTelefono"]."</td>";
+              echo "<td>".$res["ProEmail"]."</td>"; 
+              echo "<td><a href='' class='fa-solid fa-pen'></a></td>";
+              echo "<td><a href='' class='fa-solid fa-trash-can'></a></td>";
             echo "</tr>";
           }   
           ?>
            <?php
           ?>
-           
-        <tr> 
-           <th><a href="actualizar.php?id=<?php echo $row['Pro_Codigo'] ?>" class="btn btn-info">Editar</a></th>
-           <th><a href="delete.php?id=<?php echo $row['Pro_Codigo'] ?>" class="btn btn-danger">Eliminar</a></th>                                        
-        </tr>
+          
+          <!-- echo "<td><a href='delete.php?id=".$row["0"]."'><img id='img_tab_edit' src='../Imagenes/borrar.png'/></a></td>"; -->
         <?php
         ?>
-         
         </tbody>
       </table>    
     </div>    
   </div>
 </section>
 <!-- end service section -->
+
+
+ <!-- contact section -->
+
+ <section class="contact_section layout_padding">
+    <div class="custom_heading-container">
+      <h3 class=" ">
+        Formulario de Nuevo Porveedor
+      </h3>
+    </div>
+    <div class="custom_heading-container">
+      <h6 class=" ">
+        Ingresa los datos del nuevo proveedor
+      </h6>
+    </div>
+    <div class="container layout_padding2-top">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <form action="pendiente" method="post" name="formulario">
+            <div>
+              <input type="text" placeholder="Nombre" id="inNombre" name="inNombre">
+            </div>
+            <div>
+              <input type="email" placeholder="Correo Electronico" id="inEmail" name="inEmail">
+            </div>
+            <div>
+              <input type="text" placeholder="Telefono" id="inContacto" name="inContacto">
+            </div>
+            <div>
+              <select name="slSolicitud" id="slSolicitud">
+                <option value="" disabled selected>Tipo de Solicitud</option>
+                <option value="Factura">Factura</option>
+                <option value="Pedido">Pedido</option>
+                <option value="Precios">Precios</option>
+              </select>
+            </div>
+            <div>
+              <input type="text" class="message-box" placeholder="Dejanos aqui tu mensaje" id="inMensaje"
+                name="inMensaje">
+            </div>
+            <div class="d-flex justify-content-center ">
+              <button>
+                Enviar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end contact section -->
+
 
 
 <!-- end service section -->
