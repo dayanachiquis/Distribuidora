@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <!-- Basic -->
   <meta charset="utf-8" />
@@ -12,7 +11,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Contactenos</title>
+  <title>Distribuidora</title>
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css"
@@ -20,6 +19,7 @@
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <script src="https://kit.fontawesome.com/21c28403f9.js" crossorigin="anonymous"></script>
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Roboto:400,700&display=swap" rel="stylesheet">
@@ -37,7 +37,7 @@
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
             <span>
-              Contactanos
+              Ventas
             </span>
           </a>
           <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
@@ -46,71 +46,123 @@
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
-              <ul class="navbar-nav  ">
-                <li class="nav-item ">
-                  <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="about.html"> Productos </a>
-                </li>
-                
-                <li class="nav-item active">
-                  <a class="nav-link" href="contact.html">Contactenos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="login.html">Login</a>
-                </li>
-              </ul>
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+              </div>
             </div>
-          </div>
-          <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-            <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-          </form>
+
+            <form class="nav justify-content-end">
+               <button class=nav-link href="index.html">
+               <li class="fa-solid fa-arrow-right-from-bracket">
+                   <a  href="index.html">Logout</a>
+                 </li>
+                 
+                  
+                </button>
+             </form>
+            
         </nav>
-      </div>
+     </div>
     </header>
+</div> 
     <!-- end header section -->
+
+ <!-- service section -->
+ <section class="service_section layout_padding-bottom">
+  <div class="container">
+    <div class="custom_heading-container">
+        <h3 class= " ">
+          Ventas
+        </h3>           
+     </div> 
+   </div>    
+ </section>
+<!-- end service section -->
+
+ <!-- service section -->
+ <section class="service_section layout_padding-bottom">
+  <div class="container">
+    <div class="custom_heading-container">
+    <?php
+      $conexion=new PDO("mysql:host=localhost;dbname=distribuidora;","root");
+          $busqueda=$conexion->prepare("SELECT * FROM proveedor");
+          $busqueda->execute();
+          $resultado = $busqueda->fetchAll();
+      ?>
+      
+      <table class="table">
+        <caption>
+        
+        </caption>
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Codigo</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Precio</th>
+            
+           
+            
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          foreach($resultado as $res)
+          {
+            echo "<tr>";
+              echo "<td>".$res["ProCodigo"]."</td>";
+              echo "<td>".$res["ProNombre"]."</td>";
+              echo "<td>".$res["ProTelefono"]."</td>";
+              echo "<td>".$res["ProEmail"]."</td>"; 
+             
+          }   
+          ?>
+           <?php
+          ?>
+          
+          <!-- echo "<td><a href='delete.php?id=".$row["0"]."'><img id='img_tab_edit' src='../Imagenes/borrar.png'/></a></td>"; -->
+        <?php
+        ?>
+        </tbody>
+      </table>    
+    </div>    
   </div>
+</section>
+<!-- end service section -->
 
-  <!-- contact section -->
 
-  <section class="contact_section layout_padding">
+ <!-- contact section -->
+
+ <section class="contact_section layout_padding">
     <div class="custom_heading-container">
       <h3 class=" ">
-        Formulario de contacto
+        Ingresar de Datos
       </h3>
     </div>
     <div class="custom_heading-container">
       <h6 class=" ">
-        Dejanos tus datos y nos pondremos en contacto contigo!
+        
       </h6>
     </div>
     <div class="container layout_padding2-top">
       <div class="row">
         <div class="col-md-6 mx-auto">
-          <form action="databaseconnect.php" method="post" name="formulario">
+          <form action="pendiente" method="post" name="formulario">
             <div>
-              <input type="text" placeholder="Nombre" id="inNombre" name="inNombre">
+              <input type="text" placeholder="Codigo" id="VenCodigo" name="VenCodigo">
             </div>
             <div>
-              <input type="email" placeholder="Correo Electronico" id="inEmail" name="inEmail">
+              <input type="email" placeholder="Producto" id="VenProducto" name="VenProducto">
             </div>
             <div>
-              <input type="text" placeholder="Telefono" id="inContacto" name="inContacto">
+              <input type="text" placeholder="Cantidad" id="VenCantidad" name="VenCantidad">
             </div>
             <div>
-              <select name="slSolicitud" id="slSolicitud">
-                <option value="" disabled selected>Tipo de Solicitud</option>
-                <option value="Factura">Factura</option>
-                <option value="Pedido">Pedido</option>
-                <option value="Precios">Precios</option>
-              </select>
+              <input type="text" placeholder="Fecha" id="VenFecha" name="VenFecha">
             </div>
             <div>
-              <input type="text" class="message-box" placeholder="Dejanos aqui tu mensaje" id="inMensaje"
-                name="inMensaje">
+              <input type="text" placeholder="Precio" id="VenPrecio" name="VenPrecio">
             </div>
             <div class="d-flex justify-content-center ">
               <button>
@@ -125,8 +177,12 @@
 
   <!-- end contact section -->
 
-  <!-- info section -->
-  <section class="info_section layout_padding">
+
+
+<!-- end service section -->
+
+     <!-- info section -->
+   <section class="info_section layout_padding">
     <div class="container">
       <div class="row">
         <div class="col-md-3">
@@ -148,24 +204,24 @@
             </h4>
             <ul>
               <li>
-                <a href="index.html">
-                  Pagina Principal
+                <a href="Service.html">
+                  servicios
                 </a>
               </li>
               <li>
-                <a href="about.html">
-                  Nuestra Empresa
+                <a href="inventarios.php">
+                 Inventarios
                 </a>
               </li>
               
               <li>
-                <a href="contact.html">
-                  Contactenos
+                <a href="producto.php">
+                  Productos
                 </a>
               </li>
               <li>
-                <a href="#">
-                  Login - Administracion
+                <a href="venta.php">
+                 ventas
                 </a>
               </li>
             </ul>

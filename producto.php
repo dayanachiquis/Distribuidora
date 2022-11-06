@@ -54,7 +54,7 @@
           <form class="nav justify-content-end">
             <button class=nav-link href="index.html">
                 <li class="nav-item">
-                 <a class="nav-link" href="index.html">LogOut</a>
+                 <a  href="index.html">LogOut</a>
                 </li>
             </button>
           </form>
@@ -97,6 +97,9 @@
             <th scope="col">Precio</th>
             <th scope="col">Venta</th>
             <th scope="col">Existencia</th>
+            <th scope="col">Eliminar</th>
+            <th scope="col">Editar</th>
+
           
             
           </tr>
@@ -106,17 +109,25 @@
           foreach($resultado as $res)
           {
             echo "<tr>";
-            echo "<td>".$res["ProCodigo"]."</td>";
-            echo "<td>".$res["ProDescripcion"]."</td>";
-            echo "<td>".$res["ProProveedor"]."</td>";
-            echo "<td>".$res["ProPrecio"]."</td>";
-            echo "<td>".$res["ProVenta"]."</td>";
-            echo "<td>".$res["ProExistencia"]."</td>";
-           
+              echo "<td>".$res["ProCodigo"]."</td>";
+              echo "<td>".$res["ProDescripcion"]."</td>";
+              echo "<td>".$res["ProProveedor"]."</td>";
+              echo "<td>".$res["ProPrecio"]."</td>"; 
+              echo "<td>".$res["ProVenta"]."</td>"; 
+              echo "<td>".$res["ProExistencia"]."</td>"; 
+              
+
+              echo "<td><a href='' class='fa-solid fa-pen'></a></td>";
+              echo "<td><a href='proveedores_Eliminar.php?ProCodigo=".$res['ProCodigo']."' class='fa-solid fa-trash-can'></a></td>";
             echo "</tr>";
-          }   
+          }    
           ?>
-        </tbody>
+           <?php
+          ?>
+          
+          <!-- echo "<td><a href='delete.php?id=".$row["0"]."'><img id='img_tab_edit' src='../Imagenes/borrar.png'/></a></td>"; -->
+         
+          </tbody>
       </table>    
     </div>    
   </div>
@@ -126,31 +137,107 @@
 
 <!-- end service section -->
 
-    <!-- info section -->
-    <!-- info section -->
-    <section class="info_section layout_padding">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="info-logo">
-              <li>   
-               <a href="service.html">
-                    Servicios
-                  </a>
+    
+   <!-- info section -->
+   <section class="info_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="info-logo">
+            <h4>
+              Distribuidora de Licores L&D
+            </h4>
+            <p>
+              Somos una empresa dedicada a la comercialización y distribución de licores con presencia en el Municipio
+              de Melgar - Tolima.
+              Nuestra experiencia y calidad en nuestros productos y servicios nos hacen únicos.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info-nav">
+            <h4>
+              Menu
+            </h4>
+            <ul>
+              <li>
+                <a href="Service.html">
+                  servicios
+                </a>
               </li>
- 
-                <li>
-                  <a href="contact.html">
-                    Contactenos
-                  </a>
-                </li>
+              <li>
+                <a href="inventarios.php">
+                 Inventarios
+                </a>
+              </li>
+              
+              <li>
+                <a href="proveedores.php">
+                  Proveedores
+                </a>
+              </li>
+              <li>
+                <a href="venta.php">
+                 ventas
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info-contact">
+            <h4>
+              Informacion de Contacto
+            </h4>
+            <div class="location">
+              <h6>
+                Direccion de la Compañia
+              </h6>
+              <a href="https://www.google.com/search?rlz=1C1GCEA_esCO1015CO1015&tbs=lf:1,lf_ui:2&tbm=lcl&sxsrf=ALiCzsa--PN_N25k9HzD6KMS24BdiQ896g:1663643717880&q=sicomoro+melgar&rflfq=1&num=10&rldimm=11821027064523561856#rlfi=hd:;si:11821027064523561856;mv:[[4.206029099999999,-74.6415378],[4.1964995,-74.65293030000001]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!1m4!1u2!2m2!2m1!1e1!2m1!1e2!2m1!1e3!3sIAE,lf:1,lf_ui:2">
+                <img src="images/location.png" alt="">
+                <span>
+                  Direccion - Melgar Tolima
+                </span>
+              </a>
+            </div>
+            <div class="call">
+              <h6>
+                Telefono de Servicio:
+              </h6>
+              <a href="">
+                <img src="images/telephone.png" alt="">
+                <span>
+                  ( 304 33332227 )
+                </span>
+              </a>
             </div>
           </div>
         </div>
-      </div>          
-    </section>
-    <!-- end info_section -->
-    <!-- end info_section -->
+        <div class="col-md-3">
+          <div class="discover">
+            <h4>
+              Nuestras Redes Sociales
+            </h4>
+            <div class="social-box">
+              <a href="https://www.facebook.com/">
+                <img src="images/facebook.png" alt="">
+              </a>
+              <a href="https://twitter.com/">
+                <img src="images/twitter.png" alt="">
+              </a>
+              <a href="http://localhost/DistribuidoraLyD/about.html">
+                <img src="images/google-plus.png" alt="">
+              </a>
+              <a href="">
+                <img src="images/linkedin.png" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end info_section -->
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
 </body>

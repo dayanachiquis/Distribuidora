@@ -46,25 +46,26 @@
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
-             
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+              </div>
             </div>
-          </div>
-          <form class="nav justify-content-end">
-            <button class=nav-link href="index.html">
-                <li class="nav-item">
-                 <a class="nav-link" href="index.html">LogOut</a>
-                </li>
+
+            <form class="nav justify-content-end">
+               <button class=nav-link href="index.html">
+               <li class="fa-solid fa-arrow-right-from-bracket">
+                   <a  href="index.html">Logout</a>
+                 </li>
+                 
                   
-            </button>
+                </button>
+             </form>
             
-          </form>
         </nav>
-      </div>
+     </div>
     </header>
+</div> 
     <!-- end header section -->
-  </div>
 
  <!-- service section -->
  <section class="service_section layout_padding-bottom">
@@ -115,9 +116,9 @@
               echo "<td>".$res["ProTelefono"]."</td>";
               echo "<td>".$res["ProEmail"]."</td>"; 
               echo "<td><a href='' class='fa-solid fa-pen'></a></td>";
-              echo "<td><a href='' class='fa-solid fa-trash-can'></a></td>";
+              echo "<td><a href='proveedores_Eliminar.php?ProCodigo=".$res['ProCodigo']."' class='fa-solid fa-trash-can'></a></td>";
             echo "</tr>";
-          }   
+          }    
           ?>
            <?php
           ?>
@@ -134,42 +135,32 @@
 
 
  <!-- contact section -->
-
  <section class="contact_section layout_padding">
     <div class="custom_heading-container">
       <h3 class=" ">
-        Formulario de Nuevo Porveedor
+        Ingresar de Datos
       </h3>
     </div>
     <div class="custom_heading-container">
       <h6 class=" ">
-        Ingresa los datos del nuevo proveedor
+        
       </h6>
     </div>
     <div class="container layout_padding2-top">
       <div class="row">
         <div class="col-md-6 mx-auto">
-          <form action="pendiente" method="post" name="formulario">
+          <form action="proveedores_Nuevo.php" method="post" name="formulario">
+            <div>
+              <input type="text" placeholder="Codigo" id="ProCodigo" name="ProCodigo">
+            </div>
             <div>
               <input type="text" placeholder="Nombre" id="inNombre" name="inNombre">
             </div>
             <div>
-              <input type="email" placeholder="Correo Electronico" id="inEmail" name="inEmail">
+              <input type="text" placeholder="Telefono" id="inTelefono" name="inTelefono">
             </div>
             <div>
-              <input type="text" placeholder="Telefono" id="inContacto" name="inContacto">
-            </div>
-            <div>
-              <select name="slSolicitud" id="slSolicitud">
-                <option value="" disabled selected>Tipo de Solicitud</option>
-                <option value="Factura">Factura</option>
-                <option value="Pedido">Pedido</option>
-                <option value="Precios">Precios</option>
-              </select>
-            </div>
-            <div>
-              <input type="text" class="message-box" placeholder="Dejanos aqui tu mensaje" id="inMensaje"
-                name="inMensaje">
+              <input type="email" placeholder="Email" id="inEmail" name="inEmail">
             </div>
             <div class="d-flex justify-content-center ">
               <button>
@@ -181,38 +172,110 @@
       </div>
     </div>
   </section>
-
   <!-- end contact section -->
 
 
 
-<!-- end service section -->
-
-    <!-- info section -->
     <!-- info section -->
     <section class="info_section layout_padding">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="info-logo">
-              <li>   
-               <a href="service.html">
-                    Servicios
-                  </a>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="info-logo">
+            <h4>
+              Distribuidora de Licores L&D
+            </h4>
+            <p>
+              Somos una empresa dedicada a la comercialización y distribución de licores con presencia en el Municipio
+              de Melgar - Tolima.
+              Nuestra experiencia y calidad en nuestros productos y servicios nos hacen únicos.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info-nav">
+            <h4>
+              Menu
+            </h4>
+            <ul>
+              <li>
+                <a href="Service.html">
+                  servicios
+                </a>
               </li>
- 
-                <li>
-                  <a href="contact.html">
-                    Contactenos
-                  </a>
-                </li>
+              <li>
+                <a href="inventarios.php">
+                 Inventarios
+                </a>
+              </li>
+              
+              <li>
+                <a href="producto.php">
+                  Productos
+                </a>
+              </li>
+              <li>
+                <a href="ventas.php">
+                 ventas
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info-contact">
+            <h4>
+              Informacion de Contacto
+            </h4>
+            <div class="location">
+              <h6>
+                Direccion de la Compañia
+              </h6>
+              <a href="https://www.google.com/search?rlz=1C1GCEA_esCO1015CO1015&tbs=lf:1,lf_ui:2&tbm=lcl&sxsrf=ALiCzsa--PN_N25k9HzD6KMS24BdiQ896g:1663643717880&q=sicomoro+melgar&rflfq=1&num=10&rldimm=11821027064523561856#rlfi=hd:;si:11821027064523561856;mv:[[4.206029099999999,-74.6415378],[4.1964995,-74.65293030000001]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!1m4!1u2!2m2!2m1!1e1!2m1!1e2!2m1!1e3!3sIAE,lf:1,lf_ui:2">
+                <img src="images/location.png" alt="">
+                <span>
+                  Direccion - Melgar Tolima
+                </span>
+              </a>
+            </div>
+            <div class="call">
+              <h6>
+                Telefono de Servicio:
+              </h6>
+              <a href="">
+                <img src="images/telephone.png" alt="">
+                <span>
+                  ( 304 33332227 )
+                </span>
+              </a>
             </div>
           </div>
         </div>
-      </div>          
-    </section>
-    <!-- end info_section -->
-    <!-- end info_section -->
+        <div class="col-md-3">
+          <div class="discover">
+            <h4>
+              Nuestras Redes Sociales
+            </h4>
+            <div class="social-box">
+              <a href="https://www.facebook.com/">
+                <img src="images/facebook.png" alt="">
+              </a>
+              <a href="https://twitter.com/">
+                <img src="images/twitter.png" alt="">
+              </a>
+              <a href="http://localhost/DistribuidoraLyD/about.html">
+                <img src="images/google-plus.png" alt="">
+              </a>
+              <a href="">
+                <img src="images/linkedin.png" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end info_section -->
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
 </body>
