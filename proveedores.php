@@ -115,10 +115,14 @@
               echo "<td>".$res["ProNombre"]."</td>";
               echo "<td>".$res["ProTelefono"]."</td>";
               echo "<td>".$res["ProEmail"]."</td>"; 
-              echo "<td><a href='' class='fa-solid fa-pen'></a></td>";
+              echo "<td><a href='proveedores_Editar.php?ProCodigo= ' class='fa-solid fa-pen'></a></td>";
               echo "<td><a href='proveedores_Eliminar.php?ProCodigo=".$res['ProCodigo']."' class='fa-solid fa-trash-can'></a></td>";
-            echo "</tr>";
+            
+
+           echo "</tr>";
+                       
           }    
+        
           ?>
            <?php
           ?>
