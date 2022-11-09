@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-11-2022 a las 06:14:28
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.0.23
+-- Tiempo de generación: 09-11-2022 a las 04:51:03
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -96,16 +96,18 @@ CREATE TABLE `inventario` (
   `InvCantidad` int(40) DEFAULT NULL,
   `InvMovimiento` varchar(40) DEFAULT NULL,
   `InvUnidades` varchar(20) NOT NULL,
-  `InvExistencia` varchar(20) NOT NULL
+  `InvExistencia` varchar(20) NOT NULL,
+  `InvEditar` varchar(20) NOT NULL,
+  `InvEliminar` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `inventario`
 --
 
-INSERT INTO `inventario` (`InvDescripcion`, `InvCodigo`, `InvFecha`, `InvCantidad`, `InvMovimiento`, `InvUnidades`, `InvExistencia`) VALUES
-('1L Nectar', 45698, '20/09/2022', 30, 'Entrada', '30', '30'),
-('Petaco Cerveza', 123665, '25/08/2022', 20, 'Salida', '-20', '-20');
+INSERT INTO `inventario` (`InvDescripcion`, `InvCodigo`, `InvFecha`, `InvCantidad`, `InvMovimiento`, `InvUnidades`, `InvExistencia`, `InvEditar`, `InvEliminar`) VALUES
+('1L Nectar', 45698, '20/09/2022', 30, 'Entrada', '30', '30', '', ''),
+('Petaco Cerveza', 123665, '25/08/2022', 20, 'Salida', '-20', '-20', '', '');
 
 -- --------------------------------------------------------
 
@@ -145,20 +147,15 @@ CREATE TABLE `proveedor` (
   `ProTelefono` varchar(20) DEFAULT NULL,
   `ProEmail` varchar(30) DEFAULT NULL,
   `ProEditar` varchar(1) DEFAULT NULL,
-  `Eliminar` varchar(20) DEFAULT NULL
+  `ProEliminar` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `proveedor`
 --
 
-INSERT INTO `proveedor` (`ProCodigo`, `ProNombre`, `ProTelefono`, `ProEmail`, `ProEditar`, `Eliminar`) VALUES
-(12547, 'wilson', '32514646686', 'dayaana@gmail.com', NULL, NULL),
-(80025236, 'Licores sas', '7858222', 'licoressas@gmail.com', NULL, NULL),
-(80025428, 'Distribuccion el mejor whisky', '4452525', 'Bavaria@gmail.com', NULL, NULL),
-(90025256, 'Bavaria', '4405852', 'Barvaria123@gmail.com', NULL, NULL),
-(123456789, 'StikeBmx', '104', 'prueba@prueba.com', NULL, NULL),
-(1013599987, 'StikeBmx', '3162671645', 'prueba@prueba.com', NULL, NULL);
+INSERT INTO `proveedor` (`ProCodigo`, `ProNombre`, `ProTelefono`, `ProEmail`, `ProEditar`, `ProEliminar`) VALUES
+(132, '131', '321', '321@asdf.com', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -179,6 +176,20 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`inUsuario`, `inPassword`, `inRol`) VALUES
 ('Henry', '123456', 'Administrador'),
 ('Stefy', '1234567', 'Empleado');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ventas`
+--
+
+CREATE TABLE `ventas` (
+  `VenCodigo` varchar(20) NOT NULL,
+  `VenProducto` varchar(20) NOT NULL,
+  `VenCantidad` varchar(20) NOT NULL,
+  `VenFecha` varchar(20) NOT NULL,
+  `VenPrecio` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Índices para tablas volcadas

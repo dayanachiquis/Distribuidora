@@ -115,21 +115,13 @@
               echo "<td>".$res["ProNombre"]."</td>";
               echo "<td>".$res["ProTelefono"]."</td>";
               echo "<td>".$res["ProEmail"]."</td>"; 
-              echo "<td><a href='proveedores_Editar.php?ProCodigo= ' class='fa-solid fa-pen'></a></td>";
+              echo "<td><a href='proveedores_Editar.php?ProCodigo=".$res['ProCodigo']."' class='fa-solid fa-pen'></a></td>";
               echo "<td><a href='proveedores_Eliminar.php?ProCodigo=".$res['ProCodigo']."' class='fa-solid fa-trash-can'></a></td>";
-            
-
-           echo "</tr>";
-                       
+            echo "</tr>";
           }    
-        
           ?>
            <?php
           ?>
-          
-          <!-- echo "<td><a href='delete.php?id=".$row["0"]."'><img id='img_tab_edit' src='../Imagenes/borrar.png'/></a></td>"; -->
-        <?php
-        ?>
         </tbody>
       </table>    
     </div>    
