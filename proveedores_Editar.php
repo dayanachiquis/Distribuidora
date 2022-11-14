@@ -61,26 +61,12 @@
     </header>
   </div>
 
-  <!-- service section -->
-  <section class="service_section layout_padding-bottom">
-    <div class="container">
-      <div class="custom_heading-container">
-          <h3 class= " ">
-            Proveedores 
-          </h3>           
-      </div> 
-    </div>    
-  </section>
+    <!-- end service section -->
 
-
- <!-- service section -->
- <section class="service_section layout_padding-bottom">
-  <div class="container">
-    <div class="custom_heading-container">    
 
       <?php
       if(!isset ($_GET ['ProCodigo'])){
-          header('Location:Proveedores.php?mensaje=error');
+          header('Location:proveedores.php?mensaje=error');
           exit();
       }
 
@@ -101,52 +87,148 @@
 
 
       ?>      
+    <section class="contact_section layout_padding">
+    <div class="custom_heading-container">
+      <h3 class=" ">
+        Ingresar  Datos
+      </h3>
+    </div>
+    <div class="custom_heading-container">
+      <h6 class=" ">
+        
+      </h6>
+    </div>
 
-      <div class="container">
-        <div class="custom_heading-container">
-            <h3 class= " ">
-              Editar Datos
-            </h3>           
-        </div> 
-      </div>    
-        <div class="custom_heading-container">
-          <h3 class=" ">
-              Ingresar  Datos
-            </h3>
+        <div class="container mt-10">
+            <div class="row ">
+               <div class="col-md-10 mx auto">
+                
+             
+                     <form action="proveedores_editarProceso.php" method="POST" name="formulario">
+                       <div>
+                         <input type="text" placeholder="Nombre" id="ProNombre" name="ProNombre"
+                         value="<?php echo $proveedor->ProNombre; ?>">
+                       </div>
+                        <div>
+                         <input type="text" placeholder="Telefono" id="ProTelefono" name="ProTelefono"
+                          value="<?php echo $proveedor->ProTelefono; ?>">
+                        </div>
+                         <div>
+                            <input type="email" placeholder="Email" id="ProEmail" name="ProEmail" 
+                             value="<?php echo $proveedor->ProEmail; ?>">
+                          </div>
+                        <div class="d-flex justify-content-center ">
+                           <input type="hidden" name="ProCodigo"  value="<?php echo $proveedor->ProCodigo; ?>">
+                           <input type="submit" class="btn btn-primary" value="Editar">                
+                         </div>
+                      </form>
+                  </div>
+                </div>
+             </div>
+         </div>           
+   </section>
+   
+
+    <!-- info section -->
+    <section class="info_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="info-logo">
+            <h4>
+              Distribuidora de Licores L&D
+            </h4>
+            <p>
+              Somos una empresa dedicada a la comercialización y distribución de licores con presencia en el Municipio
+              de Melgar - Tolima.
+              Nuestra experiencia y calidad en nuestros productos y servicios nos hacen únicos.
+            </p>
+          </div>
         </div>
-        <div class="custom_heading-container">
-          <h6 class=" ">
-            
-          </h6>
+        <div class="col-md-3">
+          <div class="info-nav">
+            <h4>
+              Menu
+            </h4>
+            <ul>
+              <li>
+                <a href="Service.html">
+                  servicios
+                </a>
+              </li>
+              <li>
+                <a href="inventarios.php">
+                 Inventarios
+                </a>
+              </li>
+              
+              <li>
+                <a href="producto.php">
+                  Productos
+                </a>
+              </li>
+              <li>
+                <a href="ventas.php">
+                 ventas
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="container layout_padding2-top">
-          <div class="row">
-            <div class="col-md-6 mx-auto">
-              <form action="proveedores_editarProceso.php" method="POST" name="formulario">
-                <div>
-                  <input type="text" placeholder="Nombre" id="inNombre" name="inNombre"
-                  value="<?php echo $proveedor->ProNombre; ?>">
-                </div>
-                <div>
-                  <input type="text" placeholder="Telefono" id="inTelefono" name="inTelefono"
-                  value="<?php echo $proveedor->ProTelefono; ?>">
-                </div>
-                <div>
-                  <input type="email" placeholder="Email" id="inEmail" name="inEmail" 
-                  value="<?php echo $proveedor->ProEmail; ?>">
-                </div>
-                <div class="d-flex justify-content-center ">
-                  <input type="hidden" name="Procodigo" value="<?php echo $proveedor->ProCodigo; ?>">
-                  <input type="submit" class="btn btn-primary" value="Editar">                
-                </div>
-              </form>
+        <div class="col-md-3">
+          <div class="info-contact">
+            <h4>
+              Informacion de Contacto
+            </h4>
+            <div class="location">
+              <h6>
+                Direccion de la Compañia
+              </h6>
+              <a href="https://www.google.com/search?rlz=1C1GCEA_esCO1015CO1015&tbs=lf:1,lf_ui:2&tbm=lcl&sxsrf=ALiCzsa--PN_N25k9HzD6KMS24BdiQ896g:1663643717880&q=sicomoro+melgar&rflfq=1&num=10&rldimm=11821027064523561856#rlfi=hd:;si:11821027064523561856;mv:[[4.206029099999999,-74.6415378],[4.1964995,-74.65293030000001]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!1m4!1u2!2m2!2m1!1e1!2m1!1e2!2m1!1e3!3sIAE,lf:1,lf_ui:2">
+                <img src="images/location.png" alt="">
+                <span>
+                  Direccion - Melgar Tolima
+                </span>
+              </a>
+            </div>
+            <div class="call">
+              <h6>
+                Telefono de Servicio:
+              </h6>
+              <a href="">
+                <img src="images/telephone.png" alt="">
+                <span>
+                  ( 304 33332227 )
+                </span>
+              </a>
             </div>
           </div>
         </div>
-
-    </div>    
-  </div>
-</section>
+        <div class="col-md-3">
+          <div class="discover">
+            <h4>
+              Nuestras Redes Sociales
+            </h4>
+            <div class="social-box">
+              <a href="https://www.facebook.com/">
+                <img src="images/facebook.png" alt="">
+              </a>
+              <a href="https://twitter.com/">
+                <img src="images/twitter.png" alt="">
+              </a>
+              <a href="http://localhost/DistribuidoraLyD/about.html">
+                <img src="images/google-plus.png" alt="">
+              </a>
+              <a href="">
+                <img src="images/linkedin.png" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
 <!-- end service section -->
 
 

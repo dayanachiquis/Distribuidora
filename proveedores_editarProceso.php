@@ -4,6 +4,9 @@ $nombre_base_de_datos = "distribuidora";
 
 
 $ProCodigo = $_POST['ProCodigo'];
+$ProNombre = $_POST['ProNombre'];
+$ProTelefono = $_POST['ProTelefono'];
+$ProEmail = $_POST['ProEmail'];
 
 if(isset($_POST['ProCodigo'] ))
 
@@ -16,7 +19,7 @@ if(isset($_POST['ProCodigo'] ))
 
         if(isset($_POST['ProCodigo'])){
 
-            $sentencia = $base_de_datos->prepare("UPDATE proveedor SET ProNombre = ?, ProTelefono = ?, ProEmail =? WHERE  ProCodigo=?;");
+            $sentencia = $base_de_datos->prepare("UPDATE proveedor SET ProNombre = ?, ProTelefono = ?, ProEmail = ? WHERE  ProCodigo=?;");
             $resultado = $sentencia->execute([$ProNombre, $ProTelefono, $ProEmail, $ProCodigo]);
         }
 

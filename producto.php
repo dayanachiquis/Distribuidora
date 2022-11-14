@@ -133,7 +133,50 @@
 <!-- end service section -->
 
 
-<!-- end service section -->
+<section class="contact_section layout_padding">
+    <div class="custom_heading-container">
+      <h3 class=" ">
+        Ingresar de Datos
+      </h3>
+    </div>
+    <div class="custom_heading-container">
+      <h6 class=" ">
+        
+      </h6>
+    </div>
+    <div class="container layout_padding2-top">
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <form action="producto_Nuevo.php" method="post" name="formulario">
+            <div>
+              <input type="text" placeholder="Codigo" id="ProCodigo" name="ProCodigo">
+            </div>
+             <div>
+              <input type="text" placeholder="Descripcion" id="inDescripcion" name="inDescripcion">
+            </div>
+            <div>
+              <input type="text" placeholder="Proveedor" id="ProProveedor" name="ProProveedor">
+            </div>
+            <div>
+              <input type="text" placeholder="Precio" id="inprecio" name="inprecio">
+            </div>
+            <div>
+              <input type="text" placeholder="Venta" id="inVenta" name="inVenta">
+            </div>
+            <div>
+              <input type="text" placeholder="Existencia" id="inExistencia" name="inExistencia">
+            </div>
+            <div class="d-flex justify-content-center ">
+              <button>
+                Enviar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end contact section -->
 
     
    <!-- info section -->

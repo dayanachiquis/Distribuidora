@@ -4,14 +4,14 @@ $nombre_base_de_datos = "distribuidora";
 
 $ProCodigo = $_POST['ProCodigo'];
 $inDescripcion = $_POST['inDescripcion'];
-$inProveedor = $_POST['inProveedor'];
+$ProProveedor = $_POST['ProProveedor'];
 $inPrecio = $_POST['inPrecio'];
 $inVenta = $_POST['inVenta'];
 $inExistencia = $_POST['inExistencia'];
 
 if(isset( $_POST['ProCodigo']) && !empty( $_POST['ProCodigo']) &&
     isset( $_POST['inDescripcion']) && !empty( $_POST['inDescripcion']) &&
-    isset( $_POST['inProveedor']) && !empty( $_POST['inProveedor']) &&
+    isset( $_POST['ProProveedor']) && !empty( $_POST['ProProveedor']) &&
     isset( $_POST['inPrecio']) && !empty( $_POST['inPrecio']) &&
     isset( $_POST['inVenta']) && !empty( $_POST['inVenta']) &&
     isset( $_POST['inExistencia']) && !empty( $_POST['inExistencia']))
@@ -27,7 +27,7 @@ if(isset( $_POST['ProCodigo']) && !empty( $_POST['ProCodigo']) &&
             copiado y pegado el código
         */
         $sentencia = $base_de_datos->prepare("INSERT INTO producto(ProCodigo, ProDescripcion, ProProveedor, ProPrecio, ProVenta, ProExistencia) VALUES (?,?,?,?,?,?);");
-        $resultado = $sentencia->execute([$ProCodigo, $inDescripcion, $inProveedor, $inPrecio,$inVenta, $inExistencia]); # Pasar en el mismo orden de los ?
+        $resultado = $sentencia->execute([$ProCodigo, $inDescripcion, $ProProveedor, $inPrecio,$inVenta, $inExistencia]); # Pasar en el mismo orden de los ?
         #execute regresa un booleano. (1)True en caso de que todo vaya bien, (0)falso en caso contrario.
         #Con eso podemos evaluar
 
