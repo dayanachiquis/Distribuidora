@@ -85,7 +85,7 @@
     <div class="custom_heading-container">
     <?php
       $conexion=new PDO("mysql:host=localhost;dbname=distribuidora;","root");
-          $busqueda=$conexion->prepare("SELECT * FROM proveedor");
+          $busqueda=$conexion->prepare("SELECT * FROM venta");
           $busqueda->execute();
           $resultado = $busqueda->fetchAll();
       ?>
@@ -112,9 +112,10 @@
           {
             echo "<tr>";
               echo "<td>".$res["ProCodigo"]."</td>";
-              echo "<td>".$res["ProNombre"]."</td>";
-              echo "<td>".$res["ProTelefono"]."</td>";
-              echo "<td>".$res["ProEmail"]."</td>"; 
+              echo "<td>".$res["ProProducto"]."</td>";
+              echo "<td>".$res["ProCantidad"]."</td>";
+              echo "<td>".$res["ProFecha"]."</td>"; 
+              echo "<td>".$res["ProPrecio"]."</td>"; 
              
           }   
           ?>
@@ -148,21 +149,21 @@
     <div class="container layout_padding2-top">
       <div class="row">
         <div class="col-md-6 mx-auto">
-          <form action="pendiente" method="post" name="formulario">
+          <form action="venta_Nuevo.php" method="post" name="formulario">
             <div>
-              <input type="text" placeholder="Codigo" id="VenCodigo" name="VenCodigo">
+              <input type="text" placeholder="Codigo" id="inCodigo" name="inCodigo">
             </div>
             <div>
-              <input type="email" placeholder="Producto" id="VenProducto" name="VenProducto">
+              <input type="text" placeholder="Producto" id="inProducto" name="inProducto">
             </div>
             <div>
-              <input type="text" placeholder="Cantidad" id="VenCantidad" name="VenCantidad">
+              <input type="text" placeholder="Cantidad" id="inCantidad" name="inCantidad">
             </div>
             <div>
-              <input type="text" placeholder="Fecha" id="VenFecha" name="VenFecha">
+              <input type="text" placeholder="Fecha" id="inFecha" name="inFecha">
             </div>
             <div>
-              <input type="text" placeholder="Precio" id="VenPrecio" name="VenPrecio">
+              <input type="text" placeholder="Precio" id="inPrecio" name="inPrecio">
             </div>
             <div class="d-flex justify-content-center ">
               <button>
@@ -209,7 +210,7 @@
                 </a>
               </li>
               <li>
-                <a href="inventarios.php">
+                <a href="inventarios.php">  
                  Inventarios
                 </a>
               </li>
@@ -220,8 +221,9 @@
                 </a>
               </li>
               <li>
-                <a href="venta.php">
-                 ventas
+                <a href="proveesdores.php">
+              Proveedores
+
                 </a>
               </li>
             </ul>
@@ -230,7 +232,7 @@
         <div class="col-md-3">
           <div class="info-contact">
             <h4>
-              Informacion de Contacto
+              Informacion de Contacto     
             </h4>
             <div class="location">
               <h6>

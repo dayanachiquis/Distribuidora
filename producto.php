@@ -133,8 +133,8 @@
                           echo "<td>".$res["ProPrecio"]."</td>"; 
                           echo "<td>".$res["ProVenta"]."</td>"; 
                           echo "<td>".$res["ProExistencia"]."</td>"; 
-                          echo "<td><a href='.php?ProCodigo=".$res['ProCodigo']."' class='fa-solid fa-pen'></a></td>";
-                          echo "<td><a href='.php?ProCodigo=".$res['ProCodigo']."' class='fa-solid fa-trash-can'></a></td>";
+                          echo "<td><a href='producto_Editar.php?ProCodigo=".$res['ProCodigo']."' class='fa-solid fa-pen'></a></td>";
+                          echo "<td><a href='producto_Eliminar.php?ProCodigo=".$res['ProCodigo']."' class='fa-solid fa-trash-can'></a></td>";
                         echo "</tr>";
                       }    
                       ?>
