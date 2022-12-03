@@ -25,7 +25,14 @@ if(isset( $_POST['inCodigo']) && !empty( $_POST['inCodigo']) &&
             copiado y pegado el código
         */
         $sentencia = $base_de_datos->prepare("INSERT INTO venta( ProCodigo, ProProducto, ProCantidad, ProFecha, ProPrecio) VALUES (?,?,?,?,?);");
-        $resultado = $sentencia->execute([$inCodigo, $inProducto, $inCantidad, $inFecha, $inPrecio ]); # Pasar en el mismo orden de los ?
+        $resultado = $sentencia->execute([$inCodigo, $inProducto, $inCantidad, $inFecha, $inPrecio ]);
+
+       
+        }
+       
+        $sentencia2 = $base_de_datos->prepare("UPDATE inventario SET (Cantidad) = (Cantidad) -? WHERE (ProCodigo)= ?");
+        $resultado2 = $sentencia->execute   ([$inCodigo,  $inCantidad,  ]);
+        # Pasar en el mismo orden de los ?
         #execute regresa un booleano. (1)True en caso de que todo vaya bien, (0)falso en caso contrario.
         #Con eso podemos evaluar
 
@@ -37,5 +44,5 @@ if(isset( $_POST['inCodigo']) && !empty( $_POST['inCodigo']) &&
         else{
             echo "Algo salió mal. Por favor verifica que la tabla exista";
         }
-    }
+    
 ?>

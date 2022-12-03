@@ -93,10 +93,9 @@
             <th scope="col">Descripcion</th>
             <th scope="col">Codigo</th> 
             <th scope="col">Fecha</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Movimiento</th>
-            <th scope="col">Unidades</th>
-            <th scope="col">Existencia</th>
+            <th scope="col">Cantidad</th>         
+           
+            
             
           
             
@@ -107,13 +106,11 @@
           foreach($resultado as $res)
           {
             echo "<tr>";
-            echo "<td>".$res["InvDescripcion"]."</td>";
-            echo "<td>".$res["InvCodigo"]."</td>";
-            echo "<td>".$res["InvFecha"]."</td>";
-            echo "<td>".$res["InvCantidad"]."</td>";
-            echo "<td>".$res["InvMovimiento"]."</td>";
-            echo "<td>".$res["InvUnidades"]."</td>";
-            echo "<td>".$res["InvExistencia"]."</td>";
+            echo "<td>".$res["Descripcion"]."</td>";
+            echo "<td>".$res["ProCodigo"]."</td>";
+            echo "<td>".$res["Fecha"]."</td>";
+            echo "<td>".$res["Cantidad"]."</td>";
+          
           
             
             echo "</tr>";

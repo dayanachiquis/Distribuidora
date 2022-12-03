@@ -86,6 +86,14 @@
     <?php
       $conexion=new PDO("mysql:host=localhost;dbname=distribuidora;","root");
           $busqueda=$conexion->prepare("SELECT * FROM venta");
+
+          $busqueda2=$conexion->prepare("SELECT ProProducto, ProCantidad, (Procantidad-Cantidad)FROM inventario WHERE ProCodigo = Cantidad");
+
+
+
+
+
+
           $busqueda->execute();
           $resultado = $busqueda->fetchAll();
       ?>
