@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-11-2022 a las 04:51:03
+-- Tiempo de generación: 05-12-2022 a las 05:09:06
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -129,10 +129,10 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`ProCodigo`, `ProDescripcion`, `ProProveedor`, `ProPrecio`, `ProVenta`, `ProExistencia`) VALUES
-(25479, 'Gaseosa PACA DE 6 UNIDADES 1.5L', 'Bavaria', 25000, 38000, 15),
-(45698, 'Nectar 1L', 'Licores sas', 28000, 45000, 30),
-(123654, 'Ron 1L', 'Licores sas', 58000, 72000, 90),
-(123665, 'Cerveza  Aguila PETACO ', 'Bavaria', 35000, 47000, 50),
+(25479, 'Gaseosa PACA DE 6 UNIDADES 1.5L', 'Bavaria', 25000, 38000, 10),
+(45698, 'Nectar 1L', 'Licores sas', 28000, 45000, -30),
+(123654, 'Ron 1L', 'Licores sas', 58000, 72000, 87),
+(123665, 'Cerveza  Aguila PETACO ', 'Bavaria', 35000, 47000, 28),
 (254789, 'Whisky 1L', 'Distribuccion el mejor whisky', 90000, 110000, 25);
 
 -- --------------------------------------------------------
@@ -174,7 +174,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`inUsuario`, `inPassword`, `inRol`) VALUES
-('Henry', '123456', 'Administrador'),
+('Masiel', '123456', 'Administrador'),
 ('Stefy', '1234567', 'Empleado');
 
 -- --------------------------------------------------------
@@ -188,8 +188,25 @@ CREATE TABLE `ventas` (
   `VenProducto` varchar(20) NOT NULL,
   `VenCantidad` varchar(20) NOT NULL,
   `VenFecha` varchar(20) NOT NULL,
-  `VenPrecio` varchar(20) NOT NULL
+  `VenIdFactura` varchar(20) NOT NULL,
+  `EstadoFactura` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `ventas`
+--
+
+INSERT INTO `ventas` (`VenCodigo`, `VenProducto`, `VenCantidad`, `VenFecha`, `VenIdFactura`, `EstadoFactura`) VALUES
+('25479', 'Gaseosa PACA DE 6 UN', '4', '2022-12-04 21:36:59', 'FAC0001', 'Cerrado'),
+('123654', 'Ron 1L', '3', '2022-12-04 21:38:42', 'FAC0001', 'Cerrado'),
+('123665', 'Cerveza Aguila PETAC', '10', '2022-12-04 21:39:09', 'FAC0001', 'Cerrado'),
+('45698', 'Nectar 1L', '20', '2022-12-04 21:56:05', 'FAC0001', 'Cerrado'),
+('45698', 'Nectar 1L', '15', '2022-12-04 22:03:50', 'FAC0002', 'Abierto'),
+('45698', 'Nectar 1L', '10', '2022-12-04 22:42:53', 'FAC0003', 'Cerrado'),
+('45698', 'Nectar 1L', '10', '2022-12-04 22:46:05', 'FAC0001', 'Cerrado'),
+('45698', 'Nectar 1L', '5', '2022-12-04 22:50:44', 'FAC0001', 'Cerrado'),
+('123665', 'Cerveza Aguila PETAC', '2', '2022-12-04 22:52:06', 'FAC0003', 'Cerrado'),
+('123665', 'Gaseosa PACA DE 6 UN', '10', '2022-12-04 23:04:36', 'FAC0002', 'Abierto');
 
 --
 -- Índices para tablas volcadas

@@ -62,7 +62,7 @@
         <div class="container">
           <div class="custom_heading-container">
               <h3 class= " ">
-              Inventario       
+              Factura       
           </div>
         </div>
     </section>
@@ -76,9 +76,9 @@
               <div class="col">
               </div>
               <div class="col">                
-                <form action="producto.php" method="GET">
+                <form action="ventas.php" method="GET">
                   <div class="custom_heading-container">
-                    <input type="text" class="form-control" placeholder="Codigo" aria-label="Recipient's username" aria-describedby="basic-addon2"  name="busqueda">
+                    <input type="text" class="form-control" placeholder="Codigo Factura" aria-label="Recipient's username" aria-describedby="basic-addon2"  name="busqueda">
                     <div class="input-group-append">
                     <button type="submit">Buscar</button>
                     </div>
@@ -98,13 +98,57 @@
                 $busqueda = null;
                 $conexion = new PDO("mysql:host=localhost;dbname=distribuidora;","root");
                 if (isset($_GET["busqueda"])) {
-                  $ProCodigo = $_GET['busqueda'];                  
-                  $busqueda = $conexion->prepare("SELECT * FROM producto WHERE ProCodigo=?;");
-                  $busqueda->execute([$ProCodigo]);
+                  $VenIdFactura = $_GET['busqueda'];                  
+                  $busqueda = $conexion->prepare(" 
+                  SELECT 1, ventas.VenIdFactura,
+                    ventas.VenCodigo,
+                    ventas.VenProducto,
+                    ventas.VenCantidad,
+                    producto.ProVenta,
+                    ventas.VenCantidad * producto.ProVenta AS Total,        
+                    ventas.VenFecha    
+                  FROM ventas
+                  INNER JOIN producto 
+                  ON ventas.VenCodigo = producto.ProCodigo
+                  WHERE VenIdFactura=?
+                  UNION
+                  
+                  SELECT 2, '','','','','', SUM(ventas.VenCantidad * producto.ProVenta) ,''
+                  FROM ventas
+                  INNER JOIN producto 
+                  ON ventas.VenCodigo = producto.ProCodigo
+                  WHERE VenIdFactura=?
+                  ORDER BY 1;");
+                  $busqueda->execute([$VenIdFactura,$VenIdFactura]);
                   $resultado = $busqueda->fetchAll();
+
+                  $sentencia2 = $conexion->prepare("UPDATE ventas SET EstadoFactura = 'Abierto' WHERE VenIdFactura = ?");
+                  $resultado2 = $sentencia2->execute([$VenIdFactura]);
+
                 }
                 else{
-                  $busqueda=$conexion->prepare("SELECT * FROM producto");
+                  $busqueda=$conexion->prepare("
+                  
+                  SELECT 1, ventas.VenIdFactura,
+                      ventas.VenCodigo,
+                      ventas.VenProducto,
+                      ventas.VenCantidad,
+                      producto.ProVenta,
+                      ventas.VenCantidad * producto.ProVenta AS Total,        
+                      ventas.VenFecha    
+                  FROM ventas
+                  INNER JOIN producto 
+                  ON ventas.VenCodigo = producto.ProCodigo
+                  WHERE ventas.EstadoFactura <> 'Cerrado'
+
+                  UNION
+                  
+                  SELECT 2, '','','','','', SUM(ventas.VenCantidad * producto.ProVenta) ,''
+                  FROM ventas
+                  INNER JOIN producto 
+                  ON ventas.VenCodigo = producto.ProCodigo
+                  WHERE ventas.EstadoFactura <> 'Cerrado'
+                  ORDER BY 1;");
                   $busqueda->execute();
                   $resultado = $busqueda->fetchAll();
                 }                
@@ -112,13 +156,15 @@
               <table class="table">
                 <thead class="table-dark">
                     <tr>
+                      <th scope="col">Id Factura</th>
                       <th scope="col">Codigo</th>
-                      <th scope="col">Descripcion</th>
-                      <th scope="col">Proveedor</th>
-                      <th scope="col">Precio</th>
-                      <th scope="col">Venta</th>
-                      <th scope="col">Existencia</th>
-                      <th scope="col">Editar</th>
+                      <th scope="col">Producto</th>
+                      <th scope="col">Cantidad</th>
+
+                      <th scope="col">Valor Unitario</th>
+                      <th scope="col">Valor Producto(s)</th>
+
+                      <th scope="col">Fecha</th>
                       <th scope="col">Eliminar</th>
                     </tr>
                 </thead>
@@ -127,19 +173,19 @@
                       foreach($resultado as $res)
                       {
                         echo "<tr>";
-                          echo "<td>".$res["ProCodigo"]."</td>";
-                          echo "<td>".$res["ProDescripcion"]."</td>";
-                          echo "<td>".$res["ProProveedor"]."</td>";
-                          echo "<td>".$res["ProPrecio"]."</td>"; 
-                          echo "<td>".$res["ProVenta"]."</td>"; 
-                          echo "<td>".$res["ProExistencia"]."</td>"; 
-                          echo "<td><a href='producto_Editar.php?ProCodigo=".$res['ProCodigo']."' class='fa-solid fa-pen'></a></td>";
-                          echo "<td><a href='producto_Eliminar.php?ProCodigo=".$res['ProCodigo']."' class='fa-solid fa-trash-can'></a></td>";
+                          echo "<td>".$res["VenIdFactura"]."</td>";
+                          echo "<td>".$res["VenCodigo"]."</td>";
+                          echo "<td>".$res["VenProducto"]."</td>";
+                          echo "<td>".$res["VenCantidad"]."</td>";
+
+                          echo "<td>".$res["ProVenta"]."</td>";
+                          echo "<td>".$res["Total"]."</td>";
+
+                          echo "<td>".$res["VenFecha"]."</td>"; 
+                          echo "<td><a href='ventas_Eliminar.php?VenCodigo=".$res['VenCodigo']."&VenIdFactura=".$res['VenIdFactura']."' class='fa-solid fa-trash-can'></a></td>";
                         echo "</tr>";
                       }    
-                      ?>
-                    <?php
-                      ?>   
+                      ?> 
                 </tbody>
               </table>
           </div>
@@ -150,9 +196,9 @@
     <section class="service_section">
         <div class="container">
           <div class="custom_heading-container">
-            <form action="producto.php" method="GET">
+            <form action="ventas_CerrarFactura.php" method="GET">
               <div class="custom_heading-container">
-                <button type="submit">Mostrar Todo</button>
+                <button type="submit">Cerrar Factura</button>
               </div>
             </form>    
           </div>
@@ -163,33 +209,27 @@
     <!-- end service section -->
     <section class="contact_section layout_padding">
         <div class="custom_heading-container">
-          <h3 class=" ">
-              Ingresar de Datos
-          </h3>
+          <h4 class=" ">
+              Ingresar producto a vender
+          </h4>
         </div>
         <div class="custom_heading-container">
         </div>
         <div class="container layout_padding2-top">
           <div class="row">
               <div class="col-md-6 mx-auto">
-                <form action="producto_Nuevo.php" method="post" name="formulario">
+                <form action="ventas_Nuevo.php" method="post" name="formulario">
+                    <div>
+                      <input type="text" placeholder="IdFactura" id="inIdFactura" name="inIdFactura">
+                    </div>
                     <div>
                       <input type="text" placeholder="Codigo" id="inCodigo" name="inCodigo">
                     </div>
                     <div>
-                      <input type="text" placeholder="Descripcion" id="inDescripcion" name="inDescripcion">
+                      <input type="text" placeholder="Producto" id="inProducto" name="inProducto">
                     </div>
                     <div>
-                      <input type="text" placeholder="Proveedor" id="inProveedor" name="inProveedor">
-                    </div>
-                    <div>
-                      <input type="text" placeholder="Precio" id="inPrecio" name="inPrecio">
-                    </div>
-                    <div>
-                      <input type="text" placeholder="Venta" id="inVenta" name="inVenta">
-                    </div>
-                    <div>
-                      <input type="text" placeholder="Existencia" id="inExistencia" name="inExistencia">
+                      <input type="text" placeholder="Cantidad" id="inCantidad" name="inCantidad">
                     </div>
                     <div class="d-flex justify-content-center ">
                       <button>
