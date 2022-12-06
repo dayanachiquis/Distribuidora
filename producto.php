@@ -32,7 +32,7 @@
               <nav class="navbar navbar-expand-lg custom_nav-container ">
                 <a class="navbar-brand" href="index.html">
                 <span>
-                Producto
+                Inventario
                 </span>
                 </a>
                 <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
@@ -115,8 +115,8 @@
                       <th scope="col">Codigo</th>
                       <th scope="col">Descripcion</th>
                       <th scope="col">Proveedor</th>
-                      <th scope="col">Precio</th>
-                      <th scope="col">Venta</th>
+                      <th scope="col">Precio de compra</th>
+                      <th scope="col">Venta al publico</th>
                       <th scope="col">Existencia</th>
                       <th scope="col">Editar</th>
                       <th scope="col">Eliminar</th>
@@ -183,10 +183,10 @@
                       <input type="text" placeholder="Proveedor" id="inProveedor" name="inProveedor">
                     </div>
                     <div>
-                      <input type="text" placeholder="Precio" id="inPrecio" name="inPrecio">
+                      <input type="text" placeholder="Precio de compra " id="inPrecio" name="inPrecio">
                     </div>
                     <div>
-                      <input type="text" placeholder="Venta" id="inVenta" name="inVenta">
+                      <input type="text" placeholder="Venta al publico" id="inVenta" name="inVenta">
                     </div>
                     <div>
                       <input type="text" placeholder="Existencia" id="inExistencia" name="inExistencia">
@@ -228,19 +228,14 @@
                           <a href="Service.html">
                           servicios
                           </a>
-                      </li>
-                      <li>
-                          <a href="inventarios.php">
-                          Inventarios
-                          </a>
-                      </li>
+                      </li>                    
                       <li>
                           <a href="proveedores.php">
                           Proveedores
                           </a>
                       </li>
                       <li>
-                          <a href="venta.php">
+                          <a href="ventas.php">
                           ventas
                           </a>
                       </li>

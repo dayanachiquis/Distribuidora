@@ -32,7 +32,7 @@
               <nav class="navbar navbar-expand-lg custom_nav-container ">
                 <a class="navbar-brand" href="index.html">
                 <span>
-                Producto
+                Factura
                 </span>
                 </a>
                 <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
@@ -268,22 +268,17 @@
                           <a href="Service.html">
                           servicios
                           </a>
-                      </li>
-                      <li>
-                          <a href="inventarios.php">
-                          Inventarios
-                          </a>
-                      </li>
+                      </li>                     
                       <li>
                           <a href="proveedores.php">
                           Proveedores
                           </a>
-                      </li>
+                      </li>   
                       <li>
-                          <a href="venta.php">
-                          ventas
+                          <a href="producto.php">
+                          Inventario
                           </a>
-                      </li>
+                      </li>                  
                     </ul>
                 </div>
               </div>

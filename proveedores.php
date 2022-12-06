@@ -96,7 +96,7 @@
         </caption>
         <thead class="table-dark">
           <tr>
-            <th scope="col">Codigo</th>
+            <th scope="col">NIT</th>
             <th scope="col">Nombre</th>
             <th scope="col">Telefono</th>
             <th scope="col">Email</th>
@@ -147,7 +147,7 @@
         <div class="col-md-6 mx-auto">
           <form action="proveedores_Nuevo.php" method="post" name="formulario">
             <div>
-              <input type="text" placeholder="Codigo" id="ProCodigo" name="ProCodigo">
+              <input type="text" placeholder="NIT" id="ProCodigo" name="ProCodigo">
             </div>
             <div>
               <input type="text" placeholder="Nombre" id="inNombre" name="inNombre">
@@ -198,16 +198,10 @@
                 <a href="Service.html">
                   servicios
                 </a>
-              </li>
-              <li>
-                <a href="inventarios.php">
-                 Inventarios
-                </a>
-              </li>
-              
+              </li>             
               <li>
                 <a href="producto.php">
-                  Productos
+                 Inventario
                 </a>
               </li>
               <li>
